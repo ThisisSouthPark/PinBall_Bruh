@@ -48,11 +48,11 @@ namespace Crazyball.CourseKit.Obstacles
             coinChance = Mathf.Clamp01(0.35f + coinBonus);
             timer = 0.2f;
 
-            if (stage == 2 || stage == 4)
+            if (stage == 3 || stage == 6)
                 SpawnEncounter(EncounterType.MidBoss, 10 + stage / 2); // 기본 체력 + (stage / 2)
-            else if (stage == 6)
+            else if (stage == 9)
                 SpawnEncounter(EncounterType.Boss, 28);
-            else if (stage == 8)
+            else if (stage == 12)
             {
                 SpawnEncounter(EncounterType.Boss, 30);
             }
