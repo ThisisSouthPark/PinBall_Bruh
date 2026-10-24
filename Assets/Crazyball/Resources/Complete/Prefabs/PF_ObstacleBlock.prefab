@@ -126,4 +126,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crazyball.CourseKit.Obstacles.Hazard
   maxHealth: 1
-  damagedPlayer: 0
