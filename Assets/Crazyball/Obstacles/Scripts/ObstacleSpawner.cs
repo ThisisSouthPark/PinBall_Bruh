@@ -48,10 +48,14 @@ namespace Crazyball.CourseKit.Obstacles
             coinChance = Mathf.Clamp01(0.35f + coinBonus);
             timer = 0.2f;
 
-            if (stage == 3)
-                SpawnEncounter(EncounterType.MidBoss, 14);
-            else if (stage == 5)
+            if (stage == 2 || stage == 4)
+                SpawnEncounter(EncounterType.MidBoss, 10 + stage / 2); // 기본 체력 + (stage / 2)
+            else if (stage == 6)
                 SpawnEncounter(EncounterType.Boss, 28);
+            else if (stage == 8)
+            {
+                SpawnEncounter(EncounterType.Boss, 30);
+            }
         }
 
         public void SetSpawning(bool enabled)
@@ -77,12 +81,14 @@ namespace Crazyball.CourseKit.Obstacles
 
         private void SpawnEncounter(EncounterType type, int health)
         {
-            GameObject target = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            target.name = type == EncounterType.MidBoss ? "Mid Boss - Breakwall" : "Boss - Core Overlord";
+            GameObject target = type == EncounterType.MidBoss ? GameObject.CreatePrimitive(PrimitiveType.Cube) : GameObject.CreatePrimitive(PrimitiveType.Cylinder)   // 밑이랑 비슷함, 모양 변경
+            target.name = type == EncounterType.MidBoss ? "Mid Boss - Breakwall" : "Boss - Core Overlord";  //Boss의 type이 MidBoss일 경우 MidBoss, 아니면 Boss
             target.transform.position = new Vector3(0f, .55f, type == EncounterType.MidBoss ? 8f : 8.6f);
+            ///////////////////////////////// Boss의 Type에 따른 스케일 변경
             target.transform.localScale = type == EncounterType.MidBoss
                 ? new Vector3(laneWidth, 1.1f, .7f)
                 : new Vector3(2.3f, 1.4f, 1f);
+            ////////////////////////////////
             activeEncounter = target.AddComponent<EncounterTarget>();
             activeEncounter.HealthChanged += OnEncounterHealthChanged;
             activeEncounter.Defeated += OnEncounterDefeated;
