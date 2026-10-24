@@ -81,7 +81,7 @@ namespace Crazyball.CourseKit.Obstacles
 
         private void SpawnEncounter(EncounterType type, int health)
         {
-            GameObject target = type == EncounterType.MidBoss ? GameObject.CreatePrimitive(PrimitiveType.Cube) : GameObject.CreatePrimitive(PrimitiveType.Cylinder)   // 밑이랑 비슷함, 모양 변경
+            GameObject target = type == EncounterType.MidBoss ? GameObject.CreatePrimitive(PrimitiveType.Cube) : GameObject.CreatePrimitive(PrimitiveType.Cylinder);  // 밑이랑 비슷함, 모양 변경
             target.name = type == EncounterType.MidBoss ? "Mid Boss - Breakwall" : "Boss - Core Overlord";  //Boss의 type이 MidBoss일 경우 MidBoss, 아니면 Boss
             target.transform.position = new Vector3(0f, .55f, type == EncounterType.MidBoss ? 8f : 8.6f);
             ///////////////////////////////// Boss의 Type에 따른 스케일 변경

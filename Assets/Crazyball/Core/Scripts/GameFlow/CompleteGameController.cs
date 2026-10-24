@@ -14,7 +14,7 @@ namespace Crazyball.CourseKit.Core
 {
     public sealed class CompleteGameController : MonoBehaviour
     {
-        public const int FinalStage = 5;
+        public const int FinalStage = 12;
 
         [SerializeField] private RunCoinWallet wallet;
         [SerializeField] private ObstacleSpawner spawner;
